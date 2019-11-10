@@ -1,6 +1,8 @@
 package StepDef;
 
 import ComSelPro.Base;
+import PageObjects.CartPage;
+import PageObjects.CheckOutPage;
 import PageObjects.HomePage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,7 +18,9 @@ import java.util.List;
 
 public class StepDefinition {
 
-    HomePage h;
+    HomePage h = new HomePage();
+    CheckOutPage cp = new CheckOutPage();
+    CartPage cartp = new CartPage();
 
     @Given("^User will navigate to the website$")
     public void user_will_navigate_to_the_website() throws Throwable {
@@ -44,7 +48,7 @@ public class StepDefinition {
 
     @When("^User will search for \"([^\"]*)\" vegetable$")
     public void user_will_search_for_vegetable(String arg1) throws Throwable {
-        new HomePage().getSearch().sendKeys(arg1);
+        h.getSearch().sendKeys(arg1);
     }
 
     @When("^User will add items to the cart$")
@@ -61,7 +65,8 @@ public class StepDefinition {
 
     @Then("^User will verify selected \"([^\"]*)\" items are displayed in the checkout page$")
     public void user_will_verify_selected_items_are_displayed_in_the_checkout_page(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+        cp.getImage().click();
+        cp.getProceedTocheckout().click();
     }
 
     // .......
@@ -82,10 +87,9 @@ public class StepDefinition {
             List itemNeededList = Arrays.asList(itemsNeeded);
 
             if(itemNeededList.contains(name)) {
-                h
+                h.addCartLists().get(i).click();
             }
         }
-
     }
 
     @Then("^User will verify selected items are displayed in the checkout page$")

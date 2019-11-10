@@ -17,23 +17,14 @@ public class Base {
     public static WebDriver driver;
     public static Properties prop;
 
-
-
     public static WebDriver getDriver() throws IOException {
 
         prop = new Properties();
         FileInputStream fis = new FileInputStream("/Users/hakkiyaz/IdeaProjects/MyFinalProject/src/test/java/ComSelPro/global.properties");
         prop.load(fis);
 
-        //System.setProperty("webdriver.chrome.driver",
-        //        System.getProperty("user.dir")+"/Chrome.chromedriver");
-
-        //System.setProperty("webdriver.chrome.driver","/Users/hakkiyaz/Downloads/chromedriver");
-        // for windows : System.setProperty(c://user//......);
-
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        //driver.get(prop.getProperty("url"));
         return driver;
     }
 
