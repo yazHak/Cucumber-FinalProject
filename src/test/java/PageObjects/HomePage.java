@@ -44,7 +44,4 @@ public class HomePage extends Base {
         addCarts=driver.findElements(By.xpath("//div[@class='product-action']/button"));
         return addCarts;
     }
-
-
-
 }
