@@ -22,3 +22,5 @@ Feature: User is going to search for vegetable and proceed to checkout
       When  User will add more than one item to the cart
       Then  User proceed to the checkout page
       And User will verify selected items are displayed in the checkout page
+
+      #Tell all the girls I am back to home
